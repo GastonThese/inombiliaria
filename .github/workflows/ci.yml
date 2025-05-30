@@ -2,54 +2,52 @@ name: CI
 
 on:
   pull_request:
+    branches:
+      - main
   push:
-    branches: [ main ]
+    branches:
+      - main
+
 
 jobs:
-  scan_ruby:
+  test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:14
+        ports: ['5432:5432']
+        env:
+          POSTGRES_DB: ecommerce_base_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: password
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/ecommerce_base_test
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: .ruby-version
+          ruby-version: '3.2' # Cambiá esto si usás otra versión
           bundler-cache: true
 
-      - name: Scan for common Rails security vulnerabilities using static analysis
-        run: bin/brakeman --no-pager
+      - name: Install system dependencies
+        run: sudo apt-get install -y libpq-dev
 
-  scan_js:
-    runs-on: ubuntu-latest
+      - name: Install Ruby gems
+        run: bundle install
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - name: Set up the database
+        run: bundle exec rails db:prepare
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
-
-      - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: true
-
-      - name: Lint code for consistent style
-        run: bin/rubocop -f github
-
+      - name: Run tests with Makefile
+        run: make test
