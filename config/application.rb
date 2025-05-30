@@ -36,7 +36,22 @@ module AdminInmo
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Don't generate system test files.
-    config.generators.system_tests = nil
+    # Conf / Rspec
+    config.generators do |g|
+      g.factory_bot suffix: "factory"
+      g.test_framework :rspec,
+                        fixtures: true,
+                        view_specs: false,
+                        helper_specs: false,
+                        routing_specs: false,
+                        controller_specs: true,
+                        request_specs: false
+      g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
+
+    # Conf / Configuracion uuid para los modelos
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
   end
 end
