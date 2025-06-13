@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full dark:bg-slate-950" lang="en">
   <head>
     <title><%= content_for(:title) || "Admin Inmo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert" style="color: red;"><%= alert %></p>
 
-    
 
     <%= yield :head %>
 
@@ -23,7 +20,7 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-28 px-5 flex justify-center">
       <%= yield %>
     </main>
   </body>
