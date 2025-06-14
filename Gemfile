@@ -33,6 +33,8 @@ gem "bootsnap", require: false
 gem "devise", "~> 4.2"
 gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.2"
+gem 'rolify', '~> 6.0', '>= 6.0.1'
+gem 'cancancan', '~> 3.6', '>= 3.6.1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
