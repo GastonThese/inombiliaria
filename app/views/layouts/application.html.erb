@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full dark:bg-slate-950 text-stone-700 dark:text-white/80" lang="en">
+<html class="dark:bg-slate-950 text-stone-700 dark:text-white/80" lang="en">
   <head>
     <title><%= content_for(:title) || "Admin Inmo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,11 +17,16 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <!-- Flowbite styles (complementa Tailwind) -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.css" rel="stylesheet" />
+
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex justify-center">
+    <!-- drawer init and toggle -->
+    <main class="container mx-auto mt-28 px-5 flex justify-center h-full">
       <%= yield %>
     </main>
+
   </body>
 </html>

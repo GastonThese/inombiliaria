@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+
 .input-devise-container{
   @apply w-full min-w-[200px] mb-3;
 }
