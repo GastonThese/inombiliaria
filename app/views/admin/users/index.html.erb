@@ -1,0 +1,6 @@
+<div>
+<% @users.each do |item| %>
+    <%= link_to item.email, admin_user_path(item.id), class: 'font-medium text-blue-700 dark:text-white/50 hover:underline dark:hover:text-cyan-300' %>
+      <br>
+<% end %>
+</div>
