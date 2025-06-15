@@ -57,21 +57,3 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Capybara.register_driver :headless_chrome do |app|
-  options = Selenium::WebDriver::Chrome::Options.new
-  options.binary = '/usr/bin/google-chrome-stable' # o '/usr/bin/google-chrome', según prefieras
-  options.add_argument('--headless')
-  options.add_argument('--disable-gpu')
-  options.add_argument('--no-sandbox')
-  options.add_argument('--window-size=1400,1400')
-
-  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options).tap do |driver|
-    driver.browser.manage.window.maximize
-  end
-end
-
-Capybara.javascript_driver = :headless_chrome
-Capybara.default_driver = :headless_chrome
-
-
-
