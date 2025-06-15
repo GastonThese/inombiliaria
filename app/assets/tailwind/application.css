@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 .input-devise-container{
   @apply w-full min-w-[200px] mb-3;

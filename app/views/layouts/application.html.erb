@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="dark:bg-slate-950 text-stone-700 dark:text-white/80" lang="en">
+<html class="dark:bg-slate-950 text-stone-700 dark:text-white" lang="en">
   <head>
     <title><%= content_for(:title) || "Admin Inmo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,15 +14,24 @@
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <!-- Flowbite styles (complementa Tailwind) -->
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.3.0/dist/flowbite.min.css" rel="stylesheet" />
-
   </head>
 
   <body>
+
+
+
+
+
+
+    <%= render 'layouts/navbar' %>
+
+
+
     <!-- drawer init and toggle -->
     <main class="container mx-auto mt-28 px-5 flex justify-center h-full">
       <%= yield %>
