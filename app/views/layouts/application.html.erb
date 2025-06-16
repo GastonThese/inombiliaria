@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html class="dark:bg-slate-950 text-stone-700 dark:text-white" lang="en">
+<html class="dark:bg-slate-950 min-h-screen text-stone-700 dark:text-white" lang="en">
   <head>
-    <title><%= content_for(:title) || "Admin Inmo" %></title>
+    <title><%= content_for(:title) || "Ara Studio" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -22,20 +22,9 @@
   </head>
 
   <body>
-
-
-
-
-
-
     <%= render 'layouts/navbar' %>
-
-
-
-    <!-- drawer init and toggle -->
-    <main class="container mx-auto mt-28 px-5 flex justify-center h-full">
+    <main class="container mx-auto mt-28 px-5 flex justify-center  min-h-screen ">
       <%= yield %>
     </main>
-
   </body>
 </html>
