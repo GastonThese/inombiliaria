@@ -1,6 +1,7 @@
 .PHONY: test rubocop setup clean
 
 test:
+	RAILS_ENV=test bin/rails assets:precompile
 	RAILS_ENV=test bundle exec rspec
 
 rubocop-analyze:
