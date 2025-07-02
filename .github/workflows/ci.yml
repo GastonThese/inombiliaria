@@ -18,7 +18,7 @@ jobs:
         image: postgres:14
         ports: ['5432:5432']
         env:
-          POSTGRES_DB: ecommerce_base_test
+          POSTGRES_DB: inmo_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
         options: >-
@@ -29,7 +29,7 @@ jobs:
 
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:password@localhost:5432/ecommerce_base_test
+      DATABASE_URL: postgres://postgres:password@localhost:5432/inmo_test
 
     steps:
       - uses: actions/checkout@v4
@@ -48,6 +48,9 @@ jobs:
 
       - name: Set up the database
         run: bundle exec rails db:prepare
+
+      - name: Prepare assets
+        run: bundle exec rails assets:precompile
 
       - name: Run tests with Makefile
         run: make test

@@ -30,6 +30,11 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+gem "devise", "~> 4.2"
+gem "tailwindcss-ruby", "~> 4.1"
+gem "tailwindcss-rails", "~> 4.2"
+gem "rolify", "~> 6.0", ">= 6.0.1"
+gem "cancancan", "~> 3.6", ">= 3.6.1"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -56,3 +61,11 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+group :test do
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "capybara", "~> 3.40"
+  gem 'selenium-webdriver', '4.23'
+  gem "database_cleaner", "~> 1.7"
+end
+

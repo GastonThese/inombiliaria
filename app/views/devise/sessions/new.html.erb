@@ -1,0 +1,31 @@
+<%= render 'devise/form_wrapper' do %>
+  <h2 class='text-3xl font-bold mb-3'>Log in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="input-devise-container">
+      <%= f.label :email, class: 'font-bold'%><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'input-devise' %>
+    </div>
+
+    <div class="input-devise-container">
+      <%= f.label :password, class: 'font-bold' %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: 'input-devise' %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, class: 'font-semibold hover:text-cyan-700 dark:hover:text-cyan-300 cursor-pointer' %>
+      </div>
+    <% end %>
+
+    <div class= ''>
+      <%= f.submit "Log in", class:  "w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-outline-none"  %>
+    </div>
+    <p class="text-blue-600 mb-3"><%= notice %></p>
+    <p class="text-red-600 dark:text-red-500 mb-3"><%= alert %></p>
+  <% end %>
+  <%= render "devise/shared/links" %>
+<% end %>
+
+
