@@ -55,6 +55,7 @@ group :development, :test do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "active_record_doctor"
+  gem "faker", "3.5.2"
 end
 
 group :development do
@@ -65,7 +66,6 @@ end
 group :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "capybara", "~> 3.40"
-  gem 'selenium-webdriver', '4.23'
+  gem "selenium-webdriver", "4.23"
   gem "database_cleaner", "~> 1.7"
 end
-
