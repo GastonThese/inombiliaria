@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   connect() {
+    
     let savedTheme = localStorage.getItem('theme');
 
     const navbar = document.getElementById('navbar');
@@ -21,9 +22,11 @@ export default class extends Controller {
       document.getElementById('moon').classList.remove('hidden');
       document.getElementById('sun').classList.add('hidden');
     }
+
   }
 
   changeTheme() {
+    
     let html = document.documentElement;
     html.classList.toggle('dark');
 

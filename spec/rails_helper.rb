@@ -38,11 +38,11 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.include Warden::Test::Helpers
 
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
-
 
   config.use_transactional_fixtures = true
 
@@ -57,4 +57,3 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
-
