@@ -1,8 +1,15 @@
 class Admin::BuildingsController < ApplicationController
   before_action :authenticate_user!
   def index
-    pattern = "%#{params[:name]}%"
-    @buildings = Building.where("name ILIKE ?", pattern).order(params[:order] || "number").page(params[:page])
+    pattern = "%#{params[:query]&.strip}%"
+
+    @buildings = Building.order("number").page(params[:page])
+
+    if params[:query].present?
+      buildingsByNumber = @buildings.where("CAST(number AS TEXT) ILIKE :q OR name ILIKE :q", q: pattern)
+      @buildings = buildingsByNumber.order("number").page(params[:page])
+      @buildings
+    end
   end
 
   def new
