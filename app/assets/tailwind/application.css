@@ -2,6 +2,16 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+.field_with_errors {
+  label {
+    @apply text-red-500 font-black;
+  }
+
+  input {
+    @apply border-red-500;
+  }
+}
+
 .input-devise-container{
   @apply w-full min-w-[200px] mb-3;
 }
@@ -9,4 +19,37 @@
 .input-devise{
   @apply w-full bg-transparent placeholder:text-white/50  text-sm border border-stone-400 rounded-md px-3 py-2 transition duration-300 ease-in-out focus:outline-none focus:shadow focus:border-cyan-300;
 }
+
+.pagination{
+
+  @apply flex items-center justify-center mt-4;
+
+  
+  span {
+    @apply flex items-center justify-center h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white;
+  }
+
+  a {
+    @apply px-3;
+  }
+
+  nav {
+    @apply inline-flex -space-x-px text-sm;
+  }
+
+  .current {
+    @apply flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white;
+  }
+
+  .first {
+    @apply rounded-l-md;
+  }
+
+  .last {
+    @apply rounded-r-md;
+  }
+
+
+}
+
 

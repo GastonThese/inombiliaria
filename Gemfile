@@ -35,6 +35,7 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "tailwindcss-rails", "~> 4.2"
 gem "rolify", "~> 6.0", ">= 6.0.1"
 gem "cancancan", "~> 3.6", ">= 3.6.1"
+gem "kaminari", "1.2.2"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -55,6 +56,7 @@ group :development, :test do
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
   gem "active_record_doctor"
+  gem "faker", "3.5.2"
 end
 
 group :development do
@@ -65,7 +67,6 @@ end
 group :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "capybara", "~> 3.40"
-  gem 'selenium-webdriver', '4.23'
+  gem "selenium-webdriver", "4.23"
   gem "database_cleaner", "~> 1.7"
 end
-

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users
+    resources :buildings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
   end
 
   resources :user_profile, only: [ :show, :edit, :update ]
