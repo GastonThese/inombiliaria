@@ -12,7 +12,7 @@ class Admin::BuildingsController < ApplicationController
     @building = Building.new(building_params)
 
     if @building.save
-      redirect_to admin_buildings_path(query: @building.number), notice: "Edificio #{ @building.name } creado correctamente."
+      redirect_to admin_building_path(@building), notice: "Edificio #{ @building.name } creado correctamente."
     else
       render :new, status: :unprocessable_entity
     end

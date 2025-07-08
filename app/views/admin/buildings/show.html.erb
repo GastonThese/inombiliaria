@@ -1,12 +1,23 @@
 
+<h1 class='text-3xl mb-5 font-bold items-center'> <%= t('activerecord.models.building.one') %> </h1>
+<%= render 'layouts/notice_and_alert' %>
+<div class='w-full'>
+  <div class="p-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700 mb-6"> 
+    <p class="text-2xl font-bold text-stone-800 dark:text-white">Detalles del edificio</p>
 
-<div>
-<div class=""> 
-  <%= @building.number%>
-  <%= @building.name%>
-  <%= @building.address%>
-</div>
+    <p> Número: <%= @building.number%> </p>
+    <p> Nombre: <%= @building.name%> </p>
+    <p> Finca: <%= @building.address%> </p>
+  </div>
 
+  <div class="p-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700"> 
+    <div class='md:flex md:justify-between items-center w-full mb-4 border-b-2 border-b-stone-900 dark:border-b-stone-300 pb-4'>
+       <p class="mb-4 text-2xl font-bold text-stone-800 dark:text-white">Unidades del edificio</p>
+       <div class='w-full md:w-auto flex items-end'>
+        <a href='#' class='px-3 ml-auto py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'> Agregar Unidades </a>
+       </div>
+    </div>
+  </div>
 </div>
 
 
