@@ -1,15 +1,7 @@
 class Admin::BuildingsController < ApplicationController
   before_action :authenticate_user!
   def index
-    pattern = "%#{params[:query]&.strip}%"
-
-    @buildings = Building.order("number").page(params[:page])
-
-    if params[:query].present?
-      buildingsByNumber = @buildings.where("CAST(number AS TEXT) ILIKE :q OR name ILIKE :q", q: pattern)
-      @buildings = buildingsByNumber.order("number").page(params[:page])
-      @buildings
-    end
+    @buildings = building_search_service
   end
 
   def new
@@ -20,7 +12,7 @@ class Admin::BuildingsController < ApplicationController
     @building = Building.new(building_params)
 
     if @building.save
-      redirect_to admin_buildings_path, notice: "Edificio #{ @building.name } creado correctamente."
+      redirect_to admin_buildings_path(query: @building.number), notice: "Edificio #{ @building.name } creado correctamente."
     else
       render :new, status: :unprocessable_entity
     end
@@ -57,5 +49,9 @@ class Admin::BuildingsController < ApplicationController
 
   def building_params
     params.require(:building).permit(:number, :name, :address)
+  end
+
+  def building_search_service
+    Admin::SearchBuildingsService.new(query: params[:query], page: params[:page]).call
   end
 end

@@ -9,6 +9,16 @@ es:
         name: "Nombre"
         number: "Número de edificio"
         address: "Dirección - Finca"
+    errors:
+      models:
+        building:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+            number:
+              blank: "no puede estar en blanco"
+            address:
+              blank: "no puede estar en blanco"
   views:
     pagination:
       first: "&laquo; Primero"

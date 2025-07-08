@@ -2,6 +2,16 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+.field_with_errors {
+  label {
+    @apply text-red-500 font-black;
+  }
+
+  input {
+    @apply border-red-500;
+  }
+}
+
 .input-devise-container{
   @apply w-full min-w-[200px] mb-3;
 }
@@ -38,6 +48,8 @@
   .last {
     @apply rounded-r-md;
   }
+
+
 }
 
 
