@@ -1,21 +1,19 @@
 require 'rails_helper'
 RSpec.feature 'Login', type: :feature do
   let(:user) { create(:user) }
-  let!(:building) { create(:building) }
+  let!(:buildings) { create_list(:building, 1) }
 
   describe 'search a building by number and name' do
     before { login_as(user, scope: :user) }
 
-    it 'delete a building' do
+    it 'show all its data' do
       visit admin_buildings_path
 
-      click_button "delete-building-#{ building.number }-modal"
+      click_link "show-building-#{buildings.first.number}"
 
-      expect(page).to have_content("¿Confirmas eliminar el edificio #{building.number}?")
-
-      click_button "confirm-delete-#{building.number}"
-
-      expect(Building.all).to be_empty
+      expect(page).to have_text("Nombre: #{buildings.first.name}")
+      expect(page).to have_text("Finca: #{buildings.first.address}")
+      expect(page).to have_text("Número: #{buildings.first.number}")
     end
   end
 end
