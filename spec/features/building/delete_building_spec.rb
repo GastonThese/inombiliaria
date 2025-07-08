@@ -9,8 +9,6 @@ RSpec.feature 'Login', type: :feature do
     it 'delete a building' do
       visit admin_buildings_path
 
-      puts page.html
-
       click_button "delete-building-#{ building.number }-modal"
 
       expect(page).to have_content("¿Confirmas eliminar el edificio #{building.number}?")
