@@ -7,7 +7,7 @@ RSpec.feature "Login", type: :feature do
       visit new_user_session_path
 
       fill_in "Email", with: user.email
-      fill_in "Password", with: user.password
+      fill_in "Contraseña", with: user.password
       click_button "Log in"
       find("#user-menu").click
       user_email = find('#user-email').text
