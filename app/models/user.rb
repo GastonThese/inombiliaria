@@ -4,4 +4,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :properties, class_name: "Unit", foreign_key: "owner_id", dependent: :nullify
+  has_one :rented_unit, class_name: "Unit", foreign_key: "tenant_id", dependent: :nullify
 end
