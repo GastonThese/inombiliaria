@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Login', type: :feature do
-  let(:user) { create(:user) }
+  let(:user) { create(:admin) }
   let!(:buildings) { create_list(:building, 50) }
   let(:building) { buildings.first }
   let(:other_building) { buildings.last }

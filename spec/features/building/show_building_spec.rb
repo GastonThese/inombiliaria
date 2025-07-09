@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.feature 'Login', type: :feature do
-  let(:user) { create(:user) }
+  let(:user) { create(:admin) }
   let!(:buildings) { create_list(:building, 1) }
 
   describe 'search a building by number and name' do

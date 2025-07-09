@@ -24,14 +24,6 @@ class Admin::BuildingsController < ApplicationController
     @building = Building.find(params[:id])
   end
 
-/*************  ✨ Windsurf Command ⭐  *************/
-  # PATCH /admin/buildings/:id
-  # Actualiza un edificio existente.
-  #
-  # Par ametros:
-  # * id [Integer] - Identificador del edificio a actualizar.
-  # * building [Hash] - Atributos del edificio.
-/*******  5619d37e-6a2e-499d-be44-0bd9c7dfd963  *******/
   def update
     @building = Building.find(params[:id])
     if @building.update(building_params)

@@ -17,7 +17,11 @@ FactoryBot.define do
 
     factory :user_owner_with_units do
         after(:build) { |user| user.add_role(:owner) }
-        after(:create) { |user| create(:unit, owner: user, tenant: create(:tenant), building: create(:building)) }
+
+        after(:create) do |user|
+          building = create(:building)
+          create_list(:unit, 10, owner: user, tenant: create(:tenant), building:)
+        end
     end
   end
 end
