@@ -6,7 +6,6 @@ RSpec.feature "Login", type: :feature do
     before { login_as(user, scope: :user) }
     it do
       visit new_admin_building_path
-      puts page.html
       fill_in "building_name", with: "Building 1"
       fill_in "building_address", with: "Calle 1"
       fill_in "building_number", with: "1"
