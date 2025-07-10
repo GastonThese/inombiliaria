@@ -1,11 +1,10 @@
-class Unit < Property
-  belongs_to :building
+class RealState < Property
   belongs_to :owner, class_name: "User", optional: true
   belongs_to :tenant, class_name: "User", optional: true
 
   validates :number, presence: true
 
   def type
-    :unit
+    :real_state
   end
 end
