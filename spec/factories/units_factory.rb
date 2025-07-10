@@ -10,7 +10,6 @@ FactoryBot.define do
       end
 
       after(:build) do |unit, evaluator|
-        debugger
         unit.owner = evaluator.owner || create(:owner)
         unit.tenant = evaluator.tenant || create(:tenant)
         unit.building = evaluator.building || create(:building)

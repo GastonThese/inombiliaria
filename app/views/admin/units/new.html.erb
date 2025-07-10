@@ -1,11 +1,12 @@
 
 <div class='input-forms w-full max-w-md mx-auto mt-10'>
 
-  <h1 class='text-3xl mb-5 font-bold items-center'> <%="Edificio: #{@unit.building_id} - Nueva unidad"%> </h1> <%t('activerecord.models.unit.one')%>
+  <h1 class='text-3xl mb-5 font-bold items-center'> <%="Edificio: #{@building&.number} - Nueva unidad"%> </h1> <%t('activerecord.models.unit.one')%>
   <%= form_with model: [ :admin, @unit ] do |form| %>
 
 
-    <%= form.hidden_field :building_id, value: params[:building_id] || @unit.building_id %>
+    <%= form.hidden_field :building_id, value: params[:building_id] || @building.id %>
+    
     <div class="input-devise-container">
       <%= form.label :number %>
       <%= form.number_field :number, class: 'input-devise'%>

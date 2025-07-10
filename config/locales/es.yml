@@ -4,11 +4,21 @@ es:
       building:
         one: 'Edificio'
         other: 'Edificios'
+      unit:
+        one: 'Unidad'
+        other: 'Unidades'
     attributes:
       building:
         name: "Nombre"
         number: "Número de edificio"
         address: "Dirección - Finca"
+      unit:
+        number: "Número de unidad"
+        owner: "Propietario"
+        tenant: "Inquilino"
+        tenant_id: "Inquilino"
+        owner_id: "Propietario"
+        building_id: "Edificio"
     errors:
       models:
         building:
@@ -18,6 +28,10 @@ es:
             number:
               blank: "no puede estar en blanco"
             address:
+              blank: "no puede estar en blanco"
+        unit: 
+          attributes: 
+            number: 
               blank: "no puede estar en blanco"
   views:
     pagination:

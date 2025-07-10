@@ -9,7 +9,6 @@ class Admin::UnitsController < ApplicationController
 
   def create
     @unit = Unit.new(unit_params)
-    debugger
 
     if @unit.save
       redirect_to admin_unit_path(@unit), notice: "La unidad #{@unit.number} ha sido creada exitosamente."
@@ -30,12 +29,10 @@ class Admin::UnitsController < ApplicationController
   end
 
   def load_info
-    puts '-------------------owner----------------------'
-      @owners = User.with_role(:owner)
-    puts '-------------------tenant---------------------'
-      @tenants = User.with_role(:tenant)
-    puts '-------------------building-------------------'
-      @building = Building.find(params[:building_id]) if params[:building_id].present?
-    puts '-------------------end------------------------'
+    @owners = User.with_role(:owner)
+    @tenants = User.with_role(:tenant)
+    puts "Building ID: #{params[:building_id]}"
+    puts "Unit ID: #{@unit.building_id}"
+    @building = Building.find(params[:building_id] || @unit.building_id) if params[:building_id].present? || @unit.building_id
   end
 end

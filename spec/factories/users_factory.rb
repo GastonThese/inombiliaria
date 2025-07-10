@@ -20,7 +20,7 @@ FactoryBot.define do
 
         after(:create) do |user|
           building = create(:building)
-          create_list(:unit, 10, owner: user, tenant: create(:tenant), building:)
+          create_list(:full_unit, 10, owner: user, building:)
         end
     end
   end
