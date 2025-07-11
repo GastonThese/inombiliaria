@@ -1,17 +1,17 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_mailbox/engine"
-require "action_text/engine"
-require "action_view/railtie"
-require "action_cable/engine"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_mailbox/engine'
+require 'action_text/engine'
+require 'action_view/railtie'
+require 'action_cable/engine'
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -39,7 +39,7 @@ module AdminInmo
 
     # Conf / Rspec
     config.generators do |g|
-      g.factory_bot suffix: "factory"
+      g.factory_bot suffix: 'factory'
       g.test_framework :rspec,
                         fixtures: true,
                         view_specs: false,
@@ -47,7 +47,7 @@ module AdminInmo
                         routing_specs: false,
                         controller_specs: true,
                         request_specs: false
-      g.fixture_replacement :factory_bot, dir: "spec/factories"
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
     end
 
     # Conf / Configuracion uuid para los modelos

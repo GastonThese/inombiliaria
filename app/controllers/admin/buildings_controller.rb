@@ -59,7 +59,7 @@ class Admin::BuildingsController < ApplicationController
 
   def is_admin?
     unless current_user.has_role? :admin
-      redirect_to root_path, alert: "Acceso denegado."
+      redirect_to root_path, alert: 'Acceso denegado.'
     end
   end
 end

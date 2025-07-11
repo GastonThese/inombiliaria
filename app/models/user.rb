@@ -5,6 +5,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :properties, class_name: "Unit", foreign_key: "owner_id", dependent: :nullify
-  has_one :rented_unit, class_name: "Unit", foreign_key: "tenant_id", dependent: :nullify
+  has_many :properties, class_name: 'Unit', foreign_key: 'owner_id', dependent: :nullify
+  has_one :rented_unit, class_name: 'Unit', foreign_key: 'tenant_id', dependent: :nullify
 end

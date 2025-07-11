@@ -9,10 +9,9 @@ class UserProfileController < ApplicationController
 
 
   def update
-    
     @user = current_user
     if @user.update(user_params)
-      redirect_to user_profile_path 
+      redirect_to user_profile_path
     else
       render :edit
     end
