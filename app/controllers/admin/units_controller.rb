@@ -1,5 +1,6 @@
 class Admin::UnitsController < ApplicationController
   def show
+    @unit = Unit.find(params[:id])
   end
 
   def new
@@ -31,8 +32,6 @@ class Admin::UnitsController < ApplicationController
   def load_info
     @owners = User.with_role(:owner)
     @tenants = User.with_role(:tenant)
-    puts "Building ID: #{params[:building_id]}"
-    puts "Unit ID: #{@unit.building_id}"
     @building = Building.find(params[:building_id] || @unit.building_id) if params[:building_id].present? || @unit.building_id
   end
 end
