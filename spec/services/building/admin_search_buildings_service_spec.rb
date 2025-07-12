@@ -32,7 +32,6 @@ RSpec.describe Admin::SearchBuildingsService, type: :service do
         buildings.first.update(name: 'Building 1')
         expect(service.call.first.name).to eq(buildings.first.reload.name)
       end
- 
     end
   end
 end

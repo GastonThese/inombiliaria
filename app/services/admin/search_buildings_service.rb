@@ -7,14 +7,14 @@ class Admin::SearchBuildingsService
   def call
     pattern = "%#{@query&.strip}%"
 
-    buildings = Building.order("number").page(@page)
+    buildings = Building.order('number').page(@page)
 
     if @query.present?
-      buildingsByNumber = buildings.where("CAST(number AS TEXT) ILIKE :q OR name ILIKE :q", q: pattern)
-      buildings = buildingsByNumber.order("number").page(@page)
+      buildingsByNumber = buildings.where('CAST(number AS TEXT) ILIKE :q OR name ILIKE :q', q: pattern)
+      buildings = buildingsByNumber.order('number').page(@page)
       buildings
     end
-    
+
     buildings
   end
 end

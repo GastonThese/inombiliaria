@@ -25,6 +25,6 @@ class Admin::UsersController < ApplicationController
 
   private
   def authorize_admin!
-    redirect_to root_path, alert: "Access denied." unless current_user.has_role? :admin
+    redirect_to root_path, alert: 'Access denied.' unless current_user.has_role? :admin
   end
 end

@@ -1,8 +1,8 @@
 require "capybara/rspec"
-   
+
 RSpec.configure do |config|
   config.use_transactional_fixtures = false
-   
+
   config.before(:suite) do
     raise(<<-MSG) if config.use_transactional_fixtures?
           Delete line `config.use_transactional_fixtures = true` from rails_helper.rb
