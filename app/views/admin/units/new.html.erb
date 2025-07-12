@@ -5,7 +5,7 @@
   <%= form_with model: [ :admin, @unit ] do |form| %>
 
 
-    <%= form.hidden_field :building_id, value: params[:building_id] || @building.id %>
+    <%= form.hidden_field :building_id, value: params[:building_id] || @unit.building_id %>
     
     <div class="input-devise-container">
       <%= form.label :number %>

@@ -9,14 +9,18 @@ class Admin::UnitsController < ApplicationController
   end
 
   def create
-    @unit = Unit.new(unit_params)
-
-    if @unit.save
+    @unit = create_unit_service.call
+    if @unit.persisted?
       redirect_to admin_unit_path(@unit), notice: "La unidad #{@unit.number} ha sido creada exitosamente."
     else
       load_info
       render :new, status: :unprocessable_entity
     end
+  rescue ArgumentError, ActiveRecord::RecordNotFound => e
+    @unit = Unit.new(building_id: unit_params[:building_id], number: unit_params[:number])
+    @unit.errors.add(:base, e.message)
+    load_info
+    render :new, status: :unprocessable_entity
   end
 
   def edit
@@ -33,5 +37,14 @@ class Admin::UnitsController < ApplicationController
     @owners = User.with_role(:owner)
     @tenants = User.with_role(:tenant)
     @building = Building.find(params[:building_id] || @unit.building_id) if params[:building_id].present? || @unit.building_id
+  end
+
+  def create_unit_service
+    Admin::CreateUnitService.new(
+      tenant_id: unit_params[:tenant_id],
+      owner_id: unit_params[:owner_id],
+      building_id: unit_params[:building_id],
+      number: unit_params[:number]
+    )
   end
 end
