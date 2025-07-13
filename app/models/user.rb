@@ -6,5 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :properties, foreign_key: 'owner_id', dependent: :nullify
-  has_one :rented_unit, class_name: 'Unit', foreign_key: 'tenant_id', dependent: :nullify
+  has_one :rented_unit, class_name: 'Property', foreign_key: 'tenant_id', dependent: :nullify
 end
