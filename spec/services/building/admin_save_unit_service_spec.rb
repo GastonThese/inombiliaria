@@ -1,7 +1,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Admin::CreateUnitService, type: :service do
+RSpec.describe Admin::SaveUnitService, type: :service do
   describe '.call' do
     let(:service) { described_class.new(tenant_id:, building_id:, number:, owner_id:) }
     let!(:building) { create(:building) }

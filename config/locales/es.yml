@@ -23,6 +23,7 @@ es:
         tenant_id: "Inquilino"
         owner_id: "Propietario"
         building_id: "Edificio"
+        building: "Edificio"
     errors:
       models:
         building:
@@ -39,6 +40,8 @@ es:
             number: 
               blank: "no puede estar en blanco"
               taken: "ya ha sido tomado"
+            building:
+              required: "debe estar presente"
   views:
     pagination:
       first: "&laquo; Primero"
@@ -62,6 +65,7 @@ es:
       see_more: "Ver más"
       add_building: "Agregar Edificio"
       search: "Buscar"
+      edit: "Editar"
     titles:
       buildings: "Edificios"
       units: "Unidades"

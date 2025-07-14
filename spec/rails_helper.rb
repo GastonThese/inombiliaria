@@ -39,7 +39,9 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include Warden::Test::Helpers
-
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::ControllerHelpers, type: :view
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]

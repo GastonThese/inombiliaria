@@ -1,4 +1,4 @@
-class Admin::CreateUnitService
+class Admin::SaveUnitService
   attr_reader :tenant_id, :owner_id, :building_id, :number
   def initialize(tenant_id:, owner_id:, building_id:, number:)
     @tenant_id = tenant_id
