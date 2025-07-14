@@ -44,8 +44,8 @@ es:
               required: "debe estar presente"
   views:
     pagination:
-      first: "&laquo; Primero"
-      last: "Último &raquo;"
+      first: "&laquo;"
+      last: "&raquo;"
       previous: "&lsaquo;"
       next: "&rsaquo;"
       truncate: "&hellip;"
