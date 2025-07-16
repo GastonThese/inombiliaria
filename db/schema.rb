@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_10_025146) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_15_141157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_10_025146) do
     t.uuid "building_id"
     t.index ["building_id"], name: "index_properties_on_building_id"
     t.index ["owner_id"], name: "index_properties_on_owner_id"
-    t.index ["tenant_id"], name: "index_properties_on_tenant_id"
+    t.index ["tenant_id"], name: "index_properties_on_tenant_id", unique: true
   end
 
   create_table "roles", force: :cascade do |t|

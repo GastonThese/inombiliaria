@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+
   devise_for :users
 
   namespace :admin do
     resources :users
     resources :buildings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ]
     resources :units, only: [ :new, :create, :show, :edit, :update, :destroy ]
+    resources :real_states, only: [ :new, :create, :index, :show, :edit, :update, :destroy ]
   end
+
+
 
   resources :user_profile, only: [ :show, :edit, :update ]
 

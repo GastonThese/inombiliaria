@@ -7,4 +7,5 @@ RSpec.describe Unit, type: :model do
   it { is_expected.to belong_to(:building) }
 
   it { expect(create(:full_unit)).to validate_uniqueness_of(:number).scoped_to(:building_id) }
+  it { expect(create(:full_unit)).to validate_uniqueness_of(:tenant).allow_nil }
 end

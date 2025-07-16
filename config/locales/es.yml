@@ -42,6 +42,8 @@ es:
               taken: "ya ha sido tomado"
             building:
               required: "debe estar presente"
+            tenant:
+              taken: "ya pertenece a otra unidad"
   views:
     pagination:
       first: "&laquo;"

@@ -15,17 +15,14 @@ AllCops:
   Exclude:
     - 'db/migrate/**/*'
 
-require:
-  - rubocop-rails
 
-AllCops:
-  TargetRubyVersion: 3.2
-  NewCops: enable
-  Exclude:
-    - 'bin/**/*'
-    - 'db/**/*'
-    - 'node_modules/**/*'
-    - 'vendor/**/*'
+TargetRubyVersion: 3.2
+NewCops: enable
+Exclude:
+  - 'bin/**/*'
+  - 'db/**/*'
+  - 'node_modules/**/*'
+  - 'vendor/**/*'
 
 Metrics/MethodLength:
   Max: 10

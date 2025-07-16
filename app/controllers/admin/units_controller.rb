@@ -1,4 +1,5 @@
 class Admin::UnitsController < ApplicationController
+  before_action :authenticate_user!
   def show
     @unit = Unit.find(params[:id])
   end
@@ -37,7 +38,7 @@ class Admin::UnitsController < ApplicationController
     @unit = Unit.find(params[:id])
 
     if @unit.update(unit_params)
-      redirect_to admin_unit_path(@unit), notice: "La unidad #{@unit.number} ha sido creada exitosamente."
+      redirect_to admin_unit_path(@unit), notice: "La unidad #{@unit.number} ha sido actualizada exitosamente."
     else
       load_info
       render :edit, status: :unprocessable_entity

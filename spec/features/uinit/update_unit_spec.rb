@@ -16,11 +16,10 @@ RSpec.feature "Update Unit", type: :feature do
 
     it do
       visit edit_admin_unit_path(unit, params: { building_id: building.id })
-      puts edit_admin_unit_path(unit, params: { building_id: building.id })
       find("#unit_owner_id option[value='#{new_owner.id}']").select_option
       find("#unit_tenant_id option[value='#{tenant.id}']").select_option
       click_button "create-unit"
-      expect(page).to have_content("La unidad 101 ha sido creada exitosamente")
+      expect(page).to have_content("La unidad 101 ha sido actualizada exitosamente")
     end
   end
 end

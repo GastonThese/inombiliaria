@@ -20,11 +20,14 @@
     </div>
     <div class='min-w-[280px] sm:w-full grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
       <% @building.units.order(:number).each do |unit| %>
-        <div class='w-full mb-4 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700'>
-          <div class='mb-2'>
-            <p class='text-2xl font-bold'><%= unit.number %></p>
-            <p class='font-bold'>Propietario: <%= unit.owner ? unit.owner.email : "No hay propietario" %></p></p>
-            <p class='font-bold'>Inquilino: <%= unit.tenant ? unit.tenant.email : "No hay inquilino" %></p>
+        <% owner_email = unit.owner ? unit.owner.email : "No hay propietario" %>
+        <% tenant_email = unit.tenant ? unit.tenant.email : "No hay inquilino" %>
+
+        <div class='flex flex-col justify-between w-full mb-4 sm:mb-0 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700'>
+          <div class='mb-4 text-nowrap overflow-hidden'>
+            <p class='text-2xl mb-2 font-bold' id="unit-card-number-<%= unit.number %>"><%= unit.number %></p>
+            <p class='font-bold truncate' title='<%= owner_email %>'>Propietario: <%= owner_email %></p></p>
+            <p class='font-bold truncate'  title='<%= tenant_email %>'>Inquilino: <%= tenant_email %></p>
           </div>
           <div class="flex flex-row justify-between items-center">
             <a href="<%= admin_unit_path(unit.id) %>" id='show-unit-<%= unit.number %>' class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
