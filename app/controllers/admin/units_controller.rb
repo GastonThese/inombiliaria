@@ -70,15 +70,6 @@ class Admin::UnitsController < ApplicationController
     @building = Building.find(params[:building_id] || @unit.building_id) if params[:building_id].present? || @unit.building_id
   end
 
-  def save_unit_service
-    Admin::SaveUnitService.new(
-      tenant_id: unit_params[:tenant_id],
-      owner_id: unit_params[:owner_id],
-      building_id: unit_params[:building_id],
-      number: unit_params[:number]
-    )
-  end
-
   def validate_users_and_roles!(tenant_id: nil, owner_id: nil, building_id: nil)
     tenant = User.find(tenant_id) if tenant_id.present?
     owner = User.find(owner_id) if owner_id.present?
