@@ -68,5 +68,5 @@ group :test do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'capybara', '~> 3.40'
   gem 'selenium-webdriver', '4.23'
-  gem 'database_cleaner', '~> 1.7'
+  gem 'database_cleaner', '~> 2.1'
 end
