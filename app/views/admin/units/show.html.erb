@@ -1,0 +1,23 @@
+<h1 class='text-3xl mb-5 font-bold items-center'> <%= t('activerecord.models.unit.one') %>: <%= @unit.number%> </h1>
+<%= render 'layouts/notice_and_alert' %>
+<div class='w-full'>
+  <div class="p-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700 mb-6"> 
+      <div class='border-b-1 mb-2 pb-2'>
+        <p class="text-2xl font-bold text-stone-800 dark:text-white">Detalles de la unidad</p>
+        <p> Edificio: <%= @unit.building.number%>-<%= @unit.building.name %> </p>
+        <p> Finca: <%= @unit.building.address%> </p>
+      </div>
+    <div class='flex-col  sm:flex-row justify-between items-center'>
+      <div class='mb-4 sm:mb-0'>
+        <p class=''> Número: <%= @unit.number%> </p>
+        <p> Propietario: <%= @unit&.owner&.email%> </p>
+        <p> Inquilino: <%= @unit&.tenant&.email%> </p>
+      </div>
+      <div class='flex justify-end items-center'>
+        <a href='<%= edit_admin_unit_path(@unit) %>' class='px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+          <%= t('frontend.buttons.edit') %>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

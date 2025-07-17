@@ -1,0 +1,39 @@
+
+<div class='input-forms w-full max-w-md mx-auto mt-10'>
+
+  <h1 class='text-3xl mb-5 font-bold items-center'> <%="Edificio: #{@building&.number} - Nueva unidad"%> </h1> <%t('activerecord.models.unit.one')%>
+  <%= form_with model: [ :admin, @unit ], method: 'patch' do |form| %>
+    <%= form.hidden_field :building_id, value: @unit.building_id %>
+    
+    <div class="input-devise-container">
+      <%= form.label :number %>
+      <%= form.number_field :number, class: 'input-devise'%>
+    </div>
+
+    <div class="input-devise-container">
+      <%= form.label :owner_id %>
+      <%= form.select :owner_id, @owners.with_role(:owner).map { |u| [u.email, u.id] }, { include_blank: 'Ninguno' }, class: 'input-devise' %>   
+    </div>
+
+    <div class="input-devise-container">
+      <%= form.label :tenant_id %>
+      <%= form.select :tenant_id, @tenants.with_role(:tenant).map { |u| [u.email, u.id] }, { include_blank: 'Ninguno' }, class: 'input-devise'%>   
+    </div>
+
+
+    <%= form.submit 'crear', id:'create-unit', class: 'w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-outline-none mb-3'%>
+  <% end %>
+
+  <% if @unit.errors.any? %>
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <ul>
+        <% @unit.errors.full_messages.each do |message| %>
+          <li class="font-medium"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+
+

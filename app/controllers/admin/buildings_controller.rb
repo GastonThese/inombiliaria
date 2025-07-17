@@ -1,5 +1,7 @@
 class Admin::BuildingsController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_admin?
+
   def index
     @buildings = building_search_service
   end
@@ -53,5 +55,11 @@ class Admin::BuildingsController < ApplicationController
 
   def building_search_service
     Admin::SearchBuildingsService.new(query: params[:query], page: params[:page]).call
+  end
+
+  def is_admin?
+    unless current_user.has_role? :admin
+      redirect_to root_path, alert: 'Acceso denegado.'
+    end
   end
 end

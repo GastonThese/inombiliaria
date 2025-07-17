@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_06_004343) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_15_141157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_06_004343) do
     t.index ["number"], name: "index_buildings_on_number", unique: true
   end
 
+  create_table "properties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "number", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "owner_id"
+    t.uuid "tenant_id"
+    t.uuid "building_id"
+    t.index ["building_id"], name: "index_properties_on_building_id"
+    t.index ["owner_id"], name: "index_properties_on_owner_id"
+    t.index ["tenant_id"], name: "index_properties_on_tenant_id", unique: true
+  end
+
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -32,12 +44,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_06_004343) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
-  end
-
-  create_table "tests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -53,10 +59,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_06_004343) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.bigint "user_id"
+    t.uuid "user_id"
     t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
+
+  add_foreign_key "properties", "buildings"
+  add_foreign_key "properties", "users", column: "owner_id"
+  add_foreign_key "properties", "users", column: "tenant_id"
 end

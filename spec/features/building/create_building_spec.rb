@@ -1,6 +1,6 @@
 require "rails_helper"
 RSpec.feature "Login", type: :feature do
-  let(:user) { create(:user) }
+  let(:user) { create(:admin) }
 
   describe "User creatw build" do
     before { login_as(user, scope: :user) }

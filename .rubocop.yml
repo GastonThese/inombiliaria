@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 # Omakase Ruby styling for Rails
 inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
@@ -6,3 +8,37 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  
+AllCops:
+  Exclude:
+    - 'db/migrate/**/*'
+
+
+TargetRubyVersion: 3.2
+NewCops: enable
+Exclude:
+  - 'bin/**/*'
+  - 'db/**/*'
+  - 'node_modules/**/*'
+  - 'vendor/**/*'
+
+Metrics/MethodLength:
+  Max: 10
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Max: 100
+
+Metrics/ParameterLists:
+  Max: 3
+
+Metrics/BlockLength:
+  Max: 25
+  Exclude:
+    - 'spec/**/*'
+
+Rails/Validation:
+  Enabled: true
