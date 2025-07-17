@@ -12,7 +12,7 @@ RSpec.describe RealState, type: :model do
 
       duplicated = build(:full_real_state, number: 'A1')
       expect(duplicated).to be_invalid
-      expect(duplicated.errors[:number]).to include('ya está en uso')
+      expect(duplicated.errors[:number]).to include(I18n.t('activerecord.errors.models.real_state.attribute.number.taken'))
     end
   end
 end
