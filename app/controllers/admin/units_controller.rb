@@ -39,7 +39,7 @@ class Admin::UnitsController < ApplicationController
   def update
     validate_users_and_roles!(tenant_id: unit_params[:tenant_id], owner_id: unit_params[:owner_id])
     search_building!(building_id: unit_params[:building_id])
-    
+
     @unit = Unit.find(params[:id])
 
     if @unit.update(unit_params)
@@ -48,7 +48,7 @@ class Admin::UnitsController < ApplicationController
       load_info
       render :edit, status: :unprocessable_entity
     end
-  rescue ActiveRecord::RecordNotFound => e
+  rescue ArgumentError, ActiveRecord::RecordNotFound => e
     @unit = Unit.new(building_id: unit_params[:building_id], number: unit_params[:number])
     @unit.errors.add(:base, e.message)
     load_info
