@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Admin::RealStatesController, type: :controller do
 
+  before do
+    @user = create(:admin)
+    sign_in @user
+  end
+
   describe "GET #new" do
     it "returns http success" do
       get :new
