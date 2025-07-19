@@ -54,8 +54,16 @@ es:
               required: "debe estar presente"
             tenant:
               taken: "ya pertenece a otra unidad"
-        real_state: 
-          attributes: 
+        real_state:
+          attributes:
+            number: 
+              blank: "no puede estar en blanco"
+              taken: "ya ha sido tomado"
+            building:
+              required: "debe estar presente"
+            address: 
+              blank: "no puede estar en blanco"
+          attribute: 
             number: 
               blank: "no puede estar en blanco"
               taken: "ya ha sido tomado"
@@ -90,8 +98,11 @@ es:
     titles:
       buildings: "Edificios"
       units: "Unidades"
+      real_states: "Propiedades"
     details:
       building: "Detalles del Edificio"
       building_units: "Unidades del Edificio"
       unit: "Detalles de la Unidad"
+      real_states: "Propiedad"
+
 

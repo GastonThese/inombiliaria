@@ -8,9 +8,9 @@ RSpec.describe RealState, type: :model do
 
   context 'when building id is null' do
     it 'not allow duplicates numbers' do
-      create(:full_real_state, number: 'A1')
+      create(:full_real_state, number: '1')
 
-      duplicated = build(:full_real_state, number: 'A1')
+      duplicated = build(:full_real_state, number: '1')
       expect(duplicated).to be_invalid
       expect(duplicated.errors[:number]).to include(I18n.t('activerecord.errors.models.real_state.attribute.number.taken'))
     end
