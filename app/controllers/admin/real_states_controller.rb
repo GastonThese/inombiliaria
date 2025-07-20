@@ -1,5 +1,6 @@
 class Admin::RealStatesController < ApplicationController
   before_action :authenticate_user!
+  before_action :is_admin?
 
   include UserRoleValidation
   def new
@@ -77,5 +78,11 @@ end
     owner = User.find(owner_id) if owner_id.present?
     raise ArgumentError, I18n.t('errors.role_not_correct_tenant') unless tenant&.has_role?(:tenant) if tenant.present?
     raise ArgumentError, I18n.t('errors.role_not_correct_owner') unless owner&.has_role?(:owner) if owner.present?
+  end
+
+  def is_admin?
+    unless current_user.has_role?(:admin)
+      redirect_to root_path, alert: 'Acceso denegado.'
+    end
   end
 end

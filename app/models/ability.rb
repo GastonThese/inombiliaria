@@ -9,11 +9,11 @@ class Ability
     end
 
     if user.has_role? :tenant
-      can :read, :all # TODO Puede leer lo que sea de el y su edificio
+      can :read, :all, user_id: user # TODO Puede leer lo que sea de el y su edificio
     end
 
     if user.has_role? :owner
-      can :read, :all # TODO Puede leer lo que sea de el, sus propiedades y su edificio
+      can :read, RealState, owner: user
     end
   end
 end

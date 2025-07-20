@@ -50,6 +50,7 @@ es:
             number: 
               blank: "no puede estar en blanco"
               taken: "ya ha sido tomado"
+              not_a_number: "debe ser un número"
             building:
               required: "debe estar presente"
             tenant:
@@ -59,6 +60,7 @@ es:
             number: 
               blank: "no puede estar en blanco"
               taken: "ya ha sido tomado"
+              not_a_number: "debe ser un número"
             building:
               required: "debe estar presente"
             address: 

@@ -1,5 +1,7 @@
 class Admin::SearchRealStatesService
-  def initialize(query:, page:)
+  attr_reader :query, :page
+
+  def initialize(query:, page:, current_user: nil)
     @query = query.to_s&.strip
     @page = page
   end

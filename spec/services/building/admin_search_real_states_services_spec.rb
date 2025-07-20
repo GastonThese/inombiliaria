@@ -5,6 +5,8 @@ RSpec.describe Admin::SearchRealStatesService, type: :service do
     let(:service) { described_class.new(query:, page:) }
     let!(:real_states) { create_list(:full_real_state, 50) }
 
+    
+
     context 'without query and page' do
       let(:query) { nil }
       let(:page) { nil }
