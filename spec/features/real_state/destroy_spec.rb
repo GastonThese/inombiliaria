@@ -1,0 +1,25 @@
+require 'rails_helper'
+
+RSpec.feature "Destroy Real State", type: :feature do
+  let(:user) { create(:admin) }
+  let!(:real_states) { create_list(:full_real_state, 24) }
+
+  before do
+    login_as(user)
+  end
+
+  describe "when visit the index" do
+    it do
+      visit admin_real_states_path
+      fill_in 'real-state-search', with: real_states.last.number
+      click_button 'button-real-state-search'
+
+      expect(find("#real-state-number-#{real_states.last.number}")).to have_content(real_states.last.number)
+
+      click_button "delete-real-state-#{real_states.last.number}-modal"
+      click_button "confirm-delete-real-state-#{real_states.last.number}"
+
+      expect(page).to have_content("La propiedad #{real_states.last.number} ha sido eliminada exitosamente.")
+    end
+  end
+end

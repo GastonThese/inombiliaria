@@ -1,4 +1,6 @@
 class Admin::RealStatesController < ApplicationController
+  include UserRoleValidation
+
   before_action :authenticate_user!
   before_action :is_admin?
 
@@ -16,7 +18,7 @@ class Admin::RealStatesController < ApplicationController
     if @real_state.save
       redirect_to admin_real_state_path(@real_state), notice: "La propiedad #{@real_state.number} ha sido creada exitosamente."
     else
-      load_info 
+      load_info
       render :new, status: :unprocessable_entity
     end
   rescue  ActiveRecord::RecordNotFound => e
@@ -57,13 +59,20 @@ class Admin::RealStatesController < ApplicationController
   end
 
   def destroy
+    @real_state = RealState.find(params[:id])
+
+    if @real_state.destroy
+      redirect_to admin_real_states_path, notice: "La propiedad #{@real_state.number} ha sido eliminada exitosamente."
+    else
+      render :index, alert: "No se pudo eliminar la propiedad #{@real_state.number}."
+    end
   end
 
-  private 
+  private
 
   def real_state_search_service
     Admin::SearchRealStatesService.new(query: params[:query], page: params[:page]).call
-end
+  end
 
   def load_info
     @owners = User.with_role(:owner)
@@ -72,12 +81,6 @@ end
 
   def real_state_params
     params.require(:real_state).permit(:number, :owner_id, :tenant_id, :address)
-  end
-  def validate_users_and_roles!(tenant_id: nil, owner_id: nil)
-    tenant = User.find(tenant_id) if tenant_id.present?
-    owner = User.find(owner_id) if owner_id.present?
-    raise ArgumentError, I18n.t('errors.role_not_correct_tenant') unless tenant&.has_role?(:tenant) if tenant.present?
-    raise ArgumentError, I18n.t('errors.role_not_correct_owner') unless owner&.has_role?(:owner) if owner.present?
   end
 
   def is_admin?
