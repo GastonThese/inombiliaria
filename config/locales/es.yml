@@ -11,6 +11,9 @@ es:
       unit:
         one: 'Unidad'
         other: 'Unidades'
+      real_state:
+        one: 'Propiedad'
+        other: 'Propiedades'
     attributes:
       building:
         name: "Nombre"
@@ -24,6 +27,13 @@ es:
         owner_id: "Propietario"
         building_id: "Edificio"
         building: "Edificio"
+      real_state:
+        number: "Número de propiedad"
+        owner: "Propietario"
+        tenant: "Inquilino"
+        tenant_id: "Inquilino"
+        owner_id: "Propietario"
+        address: "Finca"
     errors:
       models:
         building:
@@ -40,10 +50,29 @@ es:
             number: 
               blank: "no puede estar en blanco"
               taken: "ya ha sido tomado"
+              not_a_number: "debe ser un número"
             building:
               required: "debe estar presente"
             tenant:
               taken: "ya pertenece a otra unidad"
+        real_state:
+          attributes:
+            number: 
+              blank: "no puede estar en blanco"
+              taken: "ya ha sido tomado"
+              not_a_number: "debe ser un número"
+            building:
+              required: "debe estar presente"
+            address: 
+              blank: "no puede estar en blanco"
+          attribute: 
+            number: 
+              blank: "no puede estar en blanco"
+              taken: "ya ha sido tomado"
+            building:
+              required: "debe estar presente"
+            address: 
+              blank: "no puede estar en blanco"
   views:
     pagination:
       first: "&laquo;"
@@ -71,8 +100,11 @@ es:
     titles:
       buildings: "Edificios"
       units: "Unidades"
+      real_states: "Propiedades"
     details:
       building: "Detalles del Edificio"
       building_units: "Unidades del Edificio"
       unit: "Detalles de la Unidad"
+      real_states: "Propiedad"
+
 
