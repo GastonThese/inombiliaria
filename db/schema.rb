@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_07_17_011954) do
+ActiveRecord::Schema[7.2].define(version: 2025_07_20_043408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_17_011954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["number"], name: "index_buildings_on_number", unique: true
+  end
+
+  create_table "common_rooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name"
+    t.uuid "building_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["building_id"], name: "index_common_rooms_on_building_id"
   end
 
   create_table "properties", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -68,6 +76,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_07_17_011954) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "common_rooms", "buildings"
   add_foreign_key "properties", "buildings"
   add_foreign_key "properties", "users", column: "owner_id"
   add_foreign_key "properties", "users", column: "tenant_id"
