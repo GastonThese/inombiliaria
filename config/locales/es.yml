@@ -111,11 +111,14 @@ es:
       buildings: "Edificios"
       units: "Unidades"
       real_states: "Propiedades"
+      new_common_room: "Nueva Sala Común"
     details:
       building: "Detalles del Edificio"
       building_units: "Unidades del Edificio"
       unit: "Detalles de la Unidad"
       real_states: "Propiedad"
       building_common_rooms: "Salas Comunes del Edificio"
+      common_room: "Sala Común"
+
 
 

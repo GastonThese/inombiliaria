@@ -1,8 +1,10 @@
 
 <div class='input-forms w-full max-w-md mx-auto mt-10'>
 
-  <h1 class='text-3xl mb-5 font-bold items-center'> <%="Edificio: #{@building&.number} - Nueva unidad"%> </h1> <%t('activerecord.models.common_room.one')%>
+  <h1 class='text-3xl mb-5 font-bold text-center'> <%=" #{ t('frontend.titles.new_common_room') }"%> </h1>
+  <h1 class='text-3xl mb-5 font-bold items-center'> <%="#{t('activerecord.models.building.one')}: #{@building&.number}"%> </h1>
   <%= form_with model: [ :admin, :building, @common_room ] do |form| %>
+ 
     
     <div class="input-devise-container">
       <%= form.label :name %>
