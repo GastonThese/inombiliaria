@@ -1,4 +1,26 @@
-<div>
-  <h1 class="font-bold text-4xl">Admin::CommonRooms#edit</h1>
-  <p>Find me in app/views/admin/common_rooms/edit.html.erb</p>
+
+<div class='input-forms w-full max-w-md mx-auto mt-10'>
+
+  <h1 class='text-3xl mb-5 font-bold text-center'> <%=" #{ t('frontend.titles.edit_common_room') }"%> </h1>
+  <h1 class='text-3xl mb-5 font-bold items-center'> <%="#{t('activerecord.models.building.one')}: #{@building&.number}"%> </h1>
+  <%= form_with model: [ :admin, @building, @common_room ], method: :patch do |form| %>
+ 
+    
+    <div class="input-devise-container">
+      <%= form.label :name %>
+      <%= form.text_field :name, class: 'input-devise'%>
+    </div>
+
+    <%= form.submit 'crear', id:'update-common-room', class: 'w-full text-white bg-blue-500 hover:bg-blue-800 focus:ring-1 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-outline-none mb-3'%>
+  <% end %>
+
+  <% if @common_room.errors.any? %>
+    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400" role="alert">
+      <ul>
+        <% @common_room.errors.full_messages.each do |message| %>
+          <li class="font-medium"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 </div>

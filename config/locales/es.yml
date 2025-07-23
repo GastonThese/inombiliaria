@@ -112,6 +112,7 @@ es:
       units: "Unidades"
       real_states: "Propiedades"
       new_common_room: "Nueva Sala Común"
+      edit_common_room: "Editar Sala Común"
     details:
       building: "Detalles del Edificio"
       building_units: "Unidades del Edificio"

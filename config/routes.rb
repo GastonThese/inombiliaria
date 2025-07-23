@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :buildings, only: [ :index, :new, :create, :show, :edit, :update, :destroy ] do
-      resources :common_rooms, only: [ :new, :create, :show, :edit, :update ]
+      resources :common_rooms, only: [ :new, :create, :show, :edit, :update, :destroy ]
     end
     resources :units, only: [ :new, :create, :show, :edit, :update, :destroy ] # TODO mover al resource building
     resources :real_states, only: [ :new, :create, :index, :show, :edit, :update, :destroy ]

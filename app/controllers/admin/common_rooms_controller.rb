@@ -34,7 +34,6 @@ class Admin::CommonRoomsController < ApplicationController
 
   def update
     @common_room = CommonRoom.find(params[:id])
-    @common_room.building = Building.find(params[:building_id])
 
     if @common_room.update(common_room_params)
       redirect_to admin_building_path(params[:building_id]), notice: 'Se ha actualizado la sala comunal exitosamente.'
