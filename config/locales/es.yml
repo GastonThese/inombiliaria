@@ -34,6 +34,8 @@ es:
         tenant_id: "Inquilino"
         owner_id: "Propietario"
         address: "Finca"
+      common_room:
+        name: "Nombre"
     errors:
       models:
         building:
@@ -73,6 +75,13 @@ es:
               required: "debe estar presente"
             address: 
               blank: "no puede estar en blanco"
+        common_room:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+              taken: "ya ha sido tomado"
+            building:
+              required: "debe estar presente"
   views:
     pagination:
       first: "&laquo;"
@@ -97,14 +106,20 @@ es:
       add_building: "Agregar Edificio"
       search: "Buscar"
       edit: "Editar"
+      add_common_room: "Agregar Sala Común"
     titles:
       buildings: "Edificios"
       units: "Unidades"
       real_states: "Propiedades"
+      new_common_room: "Nueva Sala Común"
+      edit_common_room: "Editar Sala Común"
     details:
       building: "Detalles del Edificio"
       building_units: "Unidades del Edificio"
       unit: "Detalles de la Unidad"
       real_states: "Propiedad"
+      building_common_rooms: "Salas Comunes del Edificio"
+      common_room: "Sala Común"
+
 
 

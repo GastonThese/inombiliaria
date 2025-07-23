@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.feature 'Login', type: :feature do
+RSpec.feature 'Delete building', type: :feature do
   let(:user) { create(:admin) }
   let!(:building) { create(:building) }
 

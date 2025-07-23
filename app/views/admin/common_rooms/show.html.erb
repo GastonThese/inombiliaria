@@ -1,0 +1,26 @@
+<div class='w-full'>
+  <div class="p-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700 mb-6"> 
+    <p class="text-2xl font-bold"><%= t('frontend.details.common_room')%></p>
+    <p> Nombre: <%= @common_room.name%> </p>
+    <div class='flex justify-end items-center'>
+      <a href='<%= edit_admin_building_common_room_path(building_id: @building.id, id: @common_room.id) %>' id='edit-common-room-<%=@common_room.name%>' class='px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'>
+        <%= t('frontend.buttons.edit') %>
+      </a>
+    </div>
+  </div>
+
+    <div class="cursor-not-allowed p-6 mb-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700"> 
+      <div class='md:flex md:justify-between items-center w-full mb-4 border-b-1 border-b-stone-900 dark:border-b-stone-300 pb-4'>
+        <p class="mb-4 text-2xl font-bold line-through"><%= t('frontend.details.bookings')%></p>
+        <div class='w-full md:w-auto flex items-end'>
+            <button href='#'  disabled   class='disabled:bg-stone-700 disabled:hover:bg-stone-700 disabled:cursor-not-allowed cursor-pointer px-3 ml-auto py-2  text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'>
+              <%= t('frontend.buttons.export_bookings') %>
+            </button>
+        </div>
+      </div>
+
+      <div class='min-w-[280px] sm:w-full grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+        <p class='text-stone-500'>No hay reservas registradas en esta sala comn.</p>
+      </div>
+    </div>
+</div>

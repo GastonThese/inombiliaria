@@ -8,8 +8,43 @@
     <p> Nombre: <%= @building.name%> </p>
     <p> Finca: <%= @building.address%> </p>
   </div>
+  <!-- TODO: mover a parcial -->
+  <div class="p-6 mb-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700"> 
+    <div class='md:flex md:justify-between items-center w-full mb-4 border-b-1 border-b-stone-900 dark:border-b-stone-300 pb-4'>
+      <p class="mb-4 text-2xl font-bold text-stone-800 dark:text-white"><%= t('frontend.details.building_common_rooms')%></p>
+      <div class='w-full md:w-auto flex items-end'>
+          <a href='<%= new_admin_building_common_room_path(building_id: @building.id) %>' id='new-common-room-<%=@building.number%>' class='px-3 ml-auto py-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800'>
+            <%= t('frontend.buttons.add_common_room') %>
+          </a>
+      </div>
+    </div>
 
-  <div class="p-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700"> 
+    <div class='min-w-[280px] sm:w-full grid grid-flow-row grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+      <%if @building.common_rooms.any? %>
+        <% @building.common_rooms.each do |common_room| %>
+          <div class='flex flex-col justify-between w-full mb-4 sm:mb-0 p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700'>
+            <div class='mb-4 text-nowrap overflow-hidden'>
+              <p class='text-2xl mb-2 font-bold' id="common-room-card-name-<%= common_room.id.gsub!('-', '') %>"><%= common_room.name %></p>
+            </div>
+            <div class="flex flex-row justify-between items-center">
+              <a href="<%= admin_building_common_room_path(building_id: @building.id, id: common_room.id) %>" id='show-common-room-<%= common_room.id %>' class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Ver más
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+              </a>
+            </div>
+          </div> 
+        <% end %>
+      <% else %>
+        <p class='text-stone-500'>No hay salas comunes registradas en este edificio.</p>
+      <% end %>
+    </div>
+  </div>
+  <!-- TODO: mover a parcial -->
+
+  <!-- TODO: mover a parcial -->
+  <div class="p-6 mb-6 bg-white border border-stone-200 rounded-lg shadow-sm dark:bg-gray-900 dark:border-gray-700 "> 
     <div class='md:flex md:justify-between items-center w-full mb-4 border-b-1 border-b-stone-900 dark:border-b-stone-300 pb-4'>
        <p class="mb-4 text-2xl font-bold text-stone-800 dark:text-white"><%= t('frontend.details.building_units')%></p>
        <div class='w-full md:w-auto flex items-end'>
@@ -72,6 +107,7 @@
       <% end %>
     </div>
   </div>
+  <!-- TODO: mover a parcial -->
 </div>
 
 

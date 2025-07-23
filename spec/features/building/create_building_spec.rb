@@ -1,5 +1,5 @@
 require "rails_helper"
-RSpec.feature "Login", type: :feature do
+RSpec.feature "Create Building", type: :feature do
   let(:user) { create(:admin) }
 
   describe "User creatw build" do
